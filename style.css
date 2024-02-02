@@ -1,0 +1,134 @@
+:root {
+  --violet: hsl(263, 55%, 52%);
+  --violet-border: hsl(263, 55%, 60%);
+  --gray-dark: hsl(217, 19%, 35%);
+  --gray-light: hsl(0, 0%, 81%);
+  --gray-lightest: hsl(210, 46%, 95%);
+  --blue: hsl(219, 29%, 14%);
+  --white: 255, 255, 255;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: var(--gray-lightest);
+  font-size: 13px;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.4rem;
+  letter-spacing: 0.2px;
+}
+.container {
+  width: min(90%, 1500px);
+  margin: 3rem auto;
+}
+
+.cards {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+.card {
+  padding: 2rem;
+  border-radius: 0.6rem;
+}
+.card__heading {
+  padding-block: 1.5rem;
+  position: relative;
+  z-index: 3;
+}
+.author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  line-height: 1rem;
+}
+.author__name {
+  color: rgb(var(--white));
+}
+.author__status {
+  font-size: 0.7rem;
+  color: rgba(var(--white), 0.5);
+}
+.author__image {
+  display: inline-block;
+  width: 2.5rem;
+  border-radius: 100%;
+  border: 2px solid var(--violet-border);
+}
+.card__text {
+  color: rgba(var(--white), 0.7);
+}
+.card:first-of-type {
+  background-color: var(--violet);
+  position: relative;
+  overflow: hidden;
+}
+.card:first-of-type::before {
+  font-family: sans-serif;
+  content: "\201C";
+  position: absolute;
+  font-size: 30rem;
+  line-height: 1;
+  top: -3.5rem;
+  right: 0;
+  z-index: 2;
+  color: rgba(var(--white), 0.25);
+}
+.card:nth-of-type(2) {
+  background-color: var(--gray-dark);
+}
+.card:nth-of-type(3),
+.card:last-of-type {
+  background-color: rgb(var(--white));
+}
+.card:nth-of-type(3) .card__heading,
+.card:last-of-type .card__heading {
+  color: var(--blue);
+}
+.card:nth-of-type(3) .card__text,
+.card:last-of-type .card__text {
+  color: var(--gray-dark);
+}
+.card:nth-of-type(3) .author__image,
+.card:last-of-type .author__image {
+  border: none;
+}
+.card:nth-of-type(4) {
+  background-color: var(--blue);
+}
+
+.card__heading {
+  color: rgb(var(--white));
+}
+
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .card:first-of-type {
+    grid-column: 1 / span 2;
+  }
+  .card:nth-of-type(3) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .card:nth-of-type(4) {
+    grid-column: 2 / span 2;
+  }
+  .card:last-of-type {
+    grid-column: 4;
+    grid-row: 1 / span 2;
+  }
+  .card:first-of-type::before {
+    right: 6rem;
+  }
+}
